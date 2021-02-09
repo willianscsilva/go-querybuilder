@@ -15,16 +15,16 @@ type People struct {
 
 func main() {
 	e := People{
-		Name: "Will",
+		Name: "John",
 		Age:  38,
 		Date: "2021-01-01'T'09:08:00",
 	}
 	var queryList []string
 	for i := 0; i < 1000; i++ {
-		insertQuery := "insert into databse.table (Name, Age, Date) VALUES(:Name, :Age, :Date)"
+		insertQuery := "insert into database.table (Name, Age, Date) VALUES(:Name, :Age, :Date)"
 		buildedInsert := querybuilder.QueryBuilder(insertQuery, e)
 
-		selectQuery := "select * from databse.table where age >= :Age and date >= :Date and name = :Name)"
+		selectQuery := "select * from database.table where age >= :Age and date >= :Date and name = :Name)"
 		buildedSelect := querybuilder.QueryBuilder(selectQuery, e)
 
 		queryList = append(queryList, buildedInsert)
