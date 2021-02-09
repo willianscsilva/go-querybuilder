@@ -23,11 +23,15 @@ func main() {
     Date: "2021-01-01'T'00:00:00",
   }
   
-  insertQuery := "insert into databse.table (Name, Age, Date) VALUES(:Name, :Age, :Date)"
+  insertQuery := "insert into database.table (Name, Age, Date) VALUES(:Name, :Age, :Date)"
   buildedInsert := querybuilder.QueryBuilder(insertQuery, e)
+  // returns
+  // "insert into database.table (Name, Age, Date) VALUES('John', 38, '2021-01-01'T'09:08:00')"
 
-  selectQuery := "select * from databse.table where age >= :Age and date >= :Date and name = :Name)"
+  selectQuery := "select * from database.table where age >= :Age and date >= :Date and name = :Name)"
   buildedSelect := querybuilder.QueryBuilder(selectQuery, e)
+  // returns
+  // select * from database.table where age >= 38 and date >= '2021-01-01'T'09:08:00' and name = 'John'
 }
 ```
 
