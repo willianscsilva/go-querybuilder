@@ -31,7 +31,7 @@ func prepareQuery(typeOf reflect.Type, query *string, index int) {
 	pattern := nameField + "(,)|" + nameField + "(,)?"
 	re := regexp.MustCompile(pattern)
 
-	strIdx := strconv.Itoa(index)
+	strIdx := "#" + strconv.Itoa(index)
 	if typeField.Kind() == reflect.String {
 		strIdx = "'" + strIdx + "'"
 	}
@@ -53,6 +53,6 @@ func buildQuery(valueOf reflect.Value, query *string, index int) {
 	default:
 		fmt.Printf("unhandled kind %s", value.Kind())
 	}
-	strIdx := strconv.Itoa(index)
+	strIdx := "#" + strconv.Itoa(index)
 	*query = strings.Replace(*query, strIdx, fmt.Sprintf("%v", finalValue), -1)
 }
